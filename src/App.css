@@ -1,0 +1,776 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #173b5e;
+  background: #edf7ff;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #edf7ff;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  padding: 28px 5%;
+  color: white;
+  background: linear-gradient(115deg, #07569e, #0875c9);
+}
+
+.hero-title {
+  text-align: center;
+}
+
+.hero-title h1 {
+  margin: 0 0 8px;
+  color: white;
+  font-size: clamp(22px, 2.2vw, 34px);
+  font-weight: 700;
+}
+
+.hero-title p {
+  margin: 0 0 18px;
+  font-size: clamp(16px, 1.8vw, 25px);
+}
+
+.vehicle-badge {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 30px;
+  font-size: 16px;
+}
+
+.summary-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 165px;
+  padding: 16px;
+  color: #173b5e;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.summary-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.summary-icon.blue {
+  background: #146bc1;
+}
+
+.summary-icon.green {
+  background: #0fa36b;
+  border-radius: 50%;
+}
+
+.summary-icon.red {
+  background: #ed3943;
+  border-radius: 50%;
+}
+
+.summary-card p {
+  margin: 0 0 6px;
+  color: #52677c;
+  font-size: 14px;
+}
+
+.summary-card strong {
+  font-size: 26px;
+}
+
+.green-text {
+  color: #0fa36b;
+}
+
+.red-text {
+  color: #ed3943;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.content {
+  width: min(1800px, 96%);
+  margin: 0 auto;
+  padding: 28px 0 48px;
+}
+
+/* =========================
+   SEARCH PANEL
+========================= */
+
+.search-panel {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #c7e2ff;
+  border-radius: 15px;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-panel input {
+  width: 100%;
+  min-width: 0;
+  padding: 17px 45px 17px 20px;
+  color: #173b5e;
+  background: white;
+  border: 1px solid #c7dff5;
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-panel input:focus {
+  border-color: #0875c9;
+  box-shadow: 0 0 0 3px rgba(8, 117, 201, 0.12);
+}
+
+.clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #8fa7c1;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.clear-btn:hover {
+  color: #ed3943;
+}
+
+.search-panel .search-btn {
+  flex-shrink: 0;
+  padding: 0 30px;
+  color: white;
+  background: #0868bd;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.search-panel .search-btn:hover {
+  background: #07569e;
+}
+
+/* =========================
+   COLOR LEGEND
+========================= */
+
+.legend-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  margin-top: 18px;
+  padding: 18px 22px;
+  background: white;
+  border: 1px solid #c7e2ff;
+  border-radius: 15px;
+}
+
+.legend-panel > strong {
+  font-size: 17px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 15px;
+}
+
+.legend-color {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+}
+
+.legend-color.available {
+  background: #0fa36b;
+}
+
+.legend-color.occupied {
+  background: #ed3943;
+}
+
+.legend-color.searched {
+  background: #ffb703;
+}
+
+/* =========================
+   SEARCH RESULT
+========================= */
+
+.search-message {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: white;
+  border: 1px solid #c7e2ff;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.search-message p {
+  margin: 8px 0 0;
+}
+
+/* =========================
+   ROAD LABEL
+========================= */
+
+.road-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 22px 0;
+  padding: 16px 22px;
+  color: white;
+  background: #213d59;
+  border: 1px solid #496680;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.road-label strong {
+  flex-shrink: 0;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.road-label span {
+  width: 100%;
+  border-top: 3px dashed #a9bdcc;
+}
+
+/* =========================
+   PARKING LAYOUT
+========================= */
+
+.parking-area {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 64px;
+  align-items: stretch;
+  gap: 14px;
+}
+
+.parking-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 18px;
+  min-width: 0;
+}
+
+.parking-card {
+  min-width: 0;
+  padding: 20px;
+  background: white;
+  border: 1px solid #c7e2ff;
+  border-radius: 15px;
+  box-shadow: 0 4px 14px rgba(15, 66, 110, 0.04);
+}
+
+.parking-card h2 {
+  margin: 0 0 18px;
+  color: #0863b5;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* =========================
+   SIDE LANES J1–J40
+========================= */
+
+.side-lane {
+  display: grid;
+  grid-template-rows: repeat(20, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 100%;
+  padding: 16px 5px;
+  background: #f7fcff;
+  border: 1px solid #c7e2ff;
+  border-radius: 13px;
+}
+
+.lane-slot-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.side-lane .parking-slot {
+  width: 42px;
+  max-width: 100%;
+  height: 29px;
+  padding: 0;
+  font-size: 11px;
+  transform: none;
+}
+
+.side-lane .parking-slot:hover {
+  transform: scale(1.08);
+}
+
+.side-lane .parking-slot.slot-searched {
+  transform: scale(1.3);
+}
+
+/* =========================
+   EDGE PARKING: 1, 2, 7, 8
+========================= */
+
+.edge-parking-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* =========================
+   DIAGONAL PARKING
+========================= */
+
+.diagonal-section {
+  min-width: 0;
+  padding: 14px 10px;
+  background: #f5fbff;
+  border: 1px solid #d9ebf8;
+  border-radius: 11px;
+  overflow-x: auto;
+}
+
+.diagonal-grid {
+  display: grid;
+  grid-template-columns: repeat(20, minmax(21px, 1fr));
+  align-items: center;
+  gap: 5px;
+  min-width: 560px;
+}
+
+.diagonal-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding-top: 15px;
+  position: relative;
+}
+
+.diagonal-column:nth-child(odd) {
+  padding-top: 0;
+}
+
+.diagonal-column .parking-slot {
+  width: 25px;
+  height: 18px;
+  padding: 0;
+  font-size: 10px;
+  transform: rotate(-28deg);
+}
+
+.diagonal-column .parking-slot:hover {
+  transform: rotate(-28deg) scale(1.1);
+}
+
+.diagonal-column .parking-slot.slot-searched {
+  transform: rotate(-28deg) scale(1.35);
+}
+
+/* =========================
+   STRAIGHT PARKING
+========================= */
+
+.straight-section,
+.center-straight-section {
+  min-width: 0;
+  padding: 14px 10px;
+  background: #f5fbff;
+  border: 1px solid #d9ebf8;
+  border-radius: 11px;
+}
+
+.straight-section {
+  overflow-x: auto;
+}
+
+.middle-row-heading {
+  margin: 0 0 10px;
+  color: #0863b5;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.straight-grid {
+  display: grid;
+  grid-template-columns: repeat(35, minmax(22px, 1fr));
+  gap: 4px;
+  min-width: 840px;
+}
+
+/* =========================
+   INDIVIDUAL PARKING SLOT
+========================= */
+
+.parking-slot {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-width: 0;
+  height: 34px;
+  padding: 0;
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    outline 0.15s ease,
+    transform 0.15s ease,
+    filter 0.15s ease,
+    background-color 0.2s ease;
+}
+
+/* Warna Status Default */
+.slot-available {
+  background: #0fa36b;
+  color: white;
+}
+
+.slot-occupied {
+  background: #ed3943;
+  color: white;
+}
+
+.parking-slot:hover {
+  filter: brightness(0.92);
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+/* WARNA KUNING & ANIMASI PULSE KHUSUS UNTUK SLOT YANG SEDANG DICARI */
+.parking-slot.slot-searched {
+  background-color: #ffb703 !important;
+  color: #000000 !important;
+  font-weight: 900;
+  position: relative;
+  z-index: 10;
+  outline: 3px solid #d48806;
+  outline-offset: 2px;
+  animation: pulseHighlight 1.5s ease-in-out 3;
+}
+
+@keyframes pulseHighlight {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(255, 183, 3, 0.4);
+  }
+  50% {
+    transform: scale(1.4);
+    box-shadow: 0 0 20px rgba(255, 183, 3, 1);
+  }
+  100% {
+    transform: scale(1.25);
+    box-shadow: 0 0 10px rgba(255, 183, 3, 0.8);
+  }
+}
+
+/* =========================
+   CENTER PARKING: 3–6
+========================= */
+
+.center-straight-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-x: auto;
+}
+
+.center-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.center-row-label {
+  color: #0863b5;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.center-row-content {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.center-row-content .straight-grid {
+  min-width: 840px;
+}
+
+/* =========================
+   CODE GUIDE
+========================= */
+
+.code-guide {
+  margin-top: 16px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #c7e2ff;
+  border-radius: 12px;
+}
+
+.code-guide h2 {
+  margin: 0 0 12px;
+  color: #0863b5;
+  font-size: 18px;
+  text-align: center;
+}
+
+.code-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.code-guide-grid > div {
+  min-width: 0;
+  padding: 10px;
+  background: #f5fbff;
+  border: 1px solid #d9ebf8;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.code-guide code {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 4px 6px;
+  color: #07569e;
+  background: #e0f0ff;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.code-guide p {
+  margin: 0;
+  color: #52677c;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.code-guide .simulation-note {
+  margin-top: 12px !important;
+  font-size: 12px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* =========================
+   RESPONSIVE LAYOUT
+========================= */
+
+@media (max-width: 1400px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-cards {
+    grid-column: 1 / -1;
+  }
+
+  .code-guide-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .parking-area {
+    grid-template-columns: 54px minmax(0, 1fr) 54px;
+    gap: 8px;
+  }
+
+  .parking-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .side-lane .parking-slot {
+    width: 38px;
+    font-size: 10px;
+  }
+
+  .code-guide-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 24px 16px;
+  }
+
+  .hero-title h1 {
+    font-size: 23px;
+  }
+
+  .hero-title p {
+    font-size: 16px;
+  }
+
+  .summary-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card {
+    min-width: 0;
+  }
+
+  .content {
+    width: 94%;
+    padding-top: 18px;
+  }
+
+  .search-panel {
+    flex-direction: column;
+  }
+
+  .search-panel .search-btn {
+    min-height: 48px;
+  }
+
+  .legend-panel {
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .legend-panel > strong {
+    width: 100%;
+  }
+
+  .road-label {
+    gap: 10px;
+    padding: 14px 10px;
+  }
+
+  .road-label strong {
+    font-size: 14px;
+  }
+
+  .parking-area {
+    grid-template-columns: 1fr;
+  }
+
+  .side-lane {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    grid-template-rows: auto;
+    gap: 12px 4px;
+    padding: 14px 8px;
+  }
+
+  .side-lane .parking-slot {
+    width: 100%;
+    max-width: 42px;
+  }
+
+  .parking-card {
+    padding: 13px;
+  }
+
+  .parking-card h2 {
+    font-size: 22px;
+  }
+
+  .code-guide {
+    padding: 12px;
+  }
+
+  .code-guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .code-guide-grid > div {
+    padding: 8px;
+  }
+
+  .code-guide h2 {
+    font-size: 16px;
+  }
+
+  .code-guide p {
+    font-size: 11px;
+  }
+}
